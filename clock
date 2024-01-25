@@ -1,0 +1,40 @@
+function setup() {
+  createCanvas(400, 400);
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(0);
+
+  let hr = hour();
+  let mn = minute();
+  let sc = second();
+
+
+  strokeWeight(8);
+  stroke(255, 100, 150);
+  noFill();
+  let endSec = map(sc, 0, 60, 0, 360);
+  arc(200, 200, 300, 300, 0, endSec);
+
+ 
+  strokeWeight(4);
+  stroke(150, 100, 255);
+  let endMin = map(mn, 0, 60, 0, 360);
+  arc(200, 200, 280, 280, 0, endMin);
+
+
+  strokeWeight(6);
+  stroke(100, 255, 150);
+  let endHr = map(hr % 12, 0, 12, 0, 360);
+    if (frameCount % 60 === 0) {
+    console.log("Minute:", mn);
+  }
+
+  push();
+  translate(200, 200);
+  rotate(endHr - 90);
+  fill(100, 255, 150);
+  rect(80 / 2, -2, 10, 80);
+  pop();
+}
